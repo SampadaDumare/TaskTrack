@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import userContext from '../context/userContext';
-import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory, useLocation, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import Taskitem from './Taskitem';
 
 const AddTask = () => {
@@ -9,7 +9,7 @@ const AddTask = () => {
   const { task, getAllTask, addTask, employee, getAllEmployees } = context;
   const history = useHistory();
   const location = useLocation();
-  const projectId = location.state?.projectId;
+  const { projectId } = useParams();
   const assignTo = location.state?.assignTo;
   const createdBy = location.state?.createdBy;
 
@@ -20,7 +20,13 @@ const AddTask = () => {
       history.push("/login")
     }
   }, [])
-  
+
+  useEffect(() => {
+    if (projectId) {
+      getAllTask(projectId);
+    }
+  }, [projectId]);
+
   useEffect(() => {
     console.log("Updated task state:", task);
   }, [task]);
@@ -71,12 +77,12 @@ const AddTask = () => {
         </div>
         <button type="submit" className="btn btn-primary" onClick={onClick}>Submit</button>
       </form>
-      
+
       <div className="row my-3">
         <h2>All Tasks Of This Project</h2>
         {task.length === 0 && <p>No tasks added yet</p>}
         {task.map((tasks) => {
-          return <Taskitem key={tasks._id} tasks={tasks} projectId={projectId} assignTo={assignTo} createdBy={createdBy}/>
+          return <Taskitem key={tasks._id} tasks={tasks} projectId={projectId} assignTo={assignTo} createdBy={createdBy} />
         })}
       </div>
 

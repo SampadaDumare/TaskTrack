@@ -10,9 +10,9 @@ const Projectitem = (props) => {
     const role = localStorage.getItem("role");
 
     const onClick = () => {
-        history.push("/addTask", { projectId: projecth._id })
+        history.push(`/addTask/${projecth._id}`)
     }
-    const handleTaskClick = ()=>{
+    const handleTaskClick = () => {
         history.push("/allTasks", { projectId: projecth._id })
     }
 
@@ -28,10 +28,10 @@ const Projectitem = (props) => {
 
                     {/* show delete button to admin */}
                     {role === "admin" && (
-                    <div>
-                        <button className="btn btn-outline-success" onClick={handleTaskClick}>Tasks</button>
-                        <button type="button" className="btn btn-outline-success mx-1" onClick={() => { deleteProject(projecth._id) }}>Delete</button>
-                    </div>
+                        <div>
+                            <button className="btn btn-outline-success" onClick={handleTaskClick}>Tasks</button>
+                            <button type="button" className="btn btn-outline-success mx-1" onClick={() => { deleteProject(projecth._id) }}>Delete</button>
+                        </div>
                     )}
                     {/* show add task button to manager with some extra details */}
                     {role === "manager" && (

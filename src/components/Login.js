@@ -1,23 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { jwtDecode } from 'jwt-decode';
 
 const Login = () => {
-    const [credentials, setCredentials] = useState({email:"", password:""});
+    const [credentials, setCredentials] = useState({ email: "", password: "" });
     const history = useHistory();
 
-    const onSubmit = async (e)=>{
+    const onSubmit = async (e) => {
         e.preventDefault();
         const response = await fetch("http://localhost:4000/api/auth/login", {
-            method: "POST", 
-            headers:{
+            method: "POST",
+            headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({email:credentials.email, password: credentials.password})
+            body: JSON.stringify({ email: credentials.email, password: credentials.password })
         })
         const json = await response.json();
         console.log(json);
-        if(json.success){
+        if (json.success) {
             //save authtoken to localhost 
             localStorage.setItem("token", json.authToken);
             localStorage.setItem("username", json.user.name);
@@ -30,25 +31,25 @@ const Login = () => {
             // localStorage.setItem("name", name);
 
             alert("Login successful");
-            if(role === "admin"){
+            if (role === "admin") {
                 history.push("/admin")
-            } else if (role === "manager"){
+            } else if (role === "manager") {
                 history.push("/manager")
-            } else{
+            } else {
                 history.push("/employee")
             }
-        }else{
+        } else {
             alert("Login Failed !!")
         }
     }
 
-    const onChange = (e)=>{
-        setCredentials({...credentials, [e.target.name] : e.target.value})
+    const onChange = (e) => {
+        setCredentials({ ...credentials, [e.target.name]: e.target.value })
     }
-    
-  return (
-    <div>
-            <form className='container' onSubmit={onSubmit}>
+
+    return (
+        <div className='container'>
+            <form className='my-3' onSubmit={onSubmit}>
                 <h2>Login to TaskTrack</h2>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">email</label>
@@ -59,10 +60,10 @@ const Login = () => {
                     <input type="password" id="password" name='password' value={credentials.password} onChange={onChange} className="form-control" />
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
-
             </form>
+            <Link className="my-3" to="/signup">Create new account</Link>
         </div>
-  )
+    )
 }
 
 export default Login

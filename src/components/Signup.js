@@ -2,38 +2,38 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Signup = () => {
-    const [credentials, setCredentials] = useState({name:"", email:"", role:"", password:"", cpassword:""});
+    const [credentials, setCredentials] = useState({ name: "", email: "", role: "", password: "", cpassword: "" });
     const history = useHistory();
 
-    const onSubmit = async (e)=>{
+    const onSubmit = async (e) => {
         e.preventDefault();
         console.log(credentials);
         const response = await fetch("http://localhost:4000/api/auth/signup", {
             method: "POST",
-            headers:{
-                "Content-Type" : "application/json"
+            headers: {
+                "Content-Type": "application/json"
             },
-            body: JSON.stringify({name: credentials.name, email:credentials.email, role:credentials.role, password:credentials.password})
+            body: JSON.stringify({ name: credentials.name, email: credentials.email, role: credentials.role, password: credentials.password })
         })
-        
+
         const json = await response.json();
         console.log(json);
-        if(json.success){
+        if (json.success) {
             // save authtoken in localstorage
             localStorage.setItem("token", json.authToken);
             alert("Signup Successful");
             history.push("/");
-        }else{
+        } else {
             alert("Signup Failed !!");
         }
     }
 
-    const onChange = (e)=>{
-        setCredentials({...credentials, [e.target.name] : e.target.value})
+    const onChange = (e) => {
+        setCredentials({ ...credentials, [e.target.name]: e.target.value })
     }
     return (
         <div>
-            <form className='container' onSubmit={onSubmit} autoComplete="off">
+            <form className='container my-3' onSubmit={onSubmit} autoComplete="off">
 
                 <h2>Signup to TaskTrack</h2>
                 <div className="my-3">
@@ -46,7 +46,7 @@ const Signup = () => {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="role" className="form-label">Role</label>
-                    <select id="role" name='role'  onChange={onChange} className="form-select">
+                    <select id="role" name='role' onChange={onChange} className="form-select">
                         <option value="">Select Role</option>
                         <option value={"admin"}>Admin</option>
                         <option value={"manager"}>Manager</option>

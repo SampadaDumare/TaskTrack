@@ -5,14 +5,14 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Manager = () => {
   const context = useContext(userContext);
-  const {project, getAllProject} = context;
+  const { project, getAllProject } = context;
   const history = useHistory();
   const name = localStorage.getItem("username");
 
-  useEffect(()=>{
-    if(localStorage.getItem("token")){
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
       getAllProject();
-    }else{
+    } else {
       history.push("/login")
     }
   }, [])

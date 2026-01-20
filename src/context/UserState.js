@@ -83,7 +83,8 @@ const UserState = (props) => {
         const json = await response.json();
         // setTask(task.concat(json));
         // Make sure we always append to an array
-    setTask(prevTasks => Array.isArray(prevTasks) ? [...prevTasks, json] : [json]);
+        setTask(prevTasks => Array.isArray(prevTasks) ? [...prevTasks, json] : [json]);
+        return json;
     }
 
     // delete project
@@ -127,8 +128,8 @@ const UserState = (props) => {
     }
 
     // get all employees
-  const getAllEmployees = async () =>{
-    // API call
+    const getAllEmployees = async () => {
+        // API call
         const response = await fetch(`${host}/api/user/fetchAllEmployees`, {
             method: "GET",
             headers: {
@@ -139,7 +140,7 @@ const UserState = (props) => {
         const json = await response.json();
         // setEmployee(json);
         setEmployee(Array.isArray(json) ? json : []);
-  }
+    }
 
     return (
         <userContext.Provider value={{ project, task, employee, getAllProject, getAllTask, getAllTaskOfEmployee, addProject, addTask, deleteProject, updateTaskStatus, getAllEmployees }}>

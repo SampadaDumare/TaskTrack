@@ -20,39 +20,39 @@ import AllTasks from './components/AllTasks';
 function App() {
   return (
     <>
-    <UserState>
-    <Router>
-      <Navbar/>
-        <Switch>
-          <Route exact path="/about">
-            <About />
-          </Route>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/signup">
-            <Signup />
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/admin">
-            <Admin />
-          </Route>
-          <Route exact path="/manager">
-            <Manager />
-          </Route>
-          <Route exact path="/employee">
-            <Employee />
-          </Route>
-          <Route exact path="/addTask">
-            <AddTask />
-          </Route>
-          <Route exact path="/allTasks">
-            <AllTasks />
-          </Route>
-        </Switch>
-      </Router>
+      <UserState>
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route exact path="/about">
+              <About />
+            </Route>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/signup">
+              <Signup />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/admin">
+              <Admin />
+            </Route>
+            <Route exact path="/manager">
+              <Manager />
+            </Route>
+            <Route exact path="/employee">
+              <Employee />
+            </Route>
+            <Route exact path="/addTask/:projectId">
+              <AddTask />
+            </Route>
+            <Route exact path="/allTasks">
+              <AllTasks />
+            </Route>
+          </Switch>
+        </Router>
       </UserState>
     </>
   );
