@@ -110,25 +110,25 @@ Future Improvements:
 
 Screenshots:
 Home - Landing Page
-![Home](screenshots/Home.png)
+![Home](Screenshots/Home.png)
 
 Login page
-![Login](screenshots/Login.png)
+![Login](Screenshots/Login.png)
 
 Signup page
-![Signup](screenshots/Signup.png)
+![Signup](Screenshots/Signup.png)
 
 Admin - Home page
-![Admin-Home](screenshots/Admin-home.png)
+![Admin-Home](Screenshots/Admin-home.png)
 
 Admin - FetchAllTasks page
-![Admin-fetchAllTasks](screenshots/Admin-seeAllTasks.png)
+![Admin-fetchAllTasks](Screenshots/Admin-seeAllTasks.png)
 
 Manager - Home page
-![Manager-Home](screenshots/Manager-home.png)
+![Manager-Home](Screenshots/Manager-home.png)
 
 Manager - AddTask page
-![Manager-AddTask](screenshots/Manager-addtask.png)
+![Manager-AddTask](Screenshots/Manager-addtask.png)
 
 Employee - Home page
-![Employee-Home](screenshots/Employee-home.png)
+![Employee-Home](Screenshots/Employee-home.png)
