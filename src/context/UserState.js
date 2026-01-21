@@ -130,20 +130,49 @@ const UserState = (props) => {
     // get all employees
     const getAllEmployees = async () => {
         // API call
-        const response = await fetch(`${host}/api/user/fetchAllEmployees`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "auth-token": localStorage.getItem('token')
-            }
-        })
-        const json = await response.json();
-        // setEmployee(json);
-        setEmployee(Array.isArray(json) ? json : []);
+        try {
+            const response = await fetch(`${host}/api/user/fetchAllEmployees`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "auth-token": localStorage.getItem('token')
+                }
+            })
+            const json = await response.json();
+            // setEmployee(json);
+            setEmployee(Array.isArray(json) ? json : []);
+        } catch (error) {
+            console.error("Failed to fetch employees:", error.message);
+        }
+    }
+
+    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
+    const [role, setRole] = useState(localStorage.getItem("role") || "");
+    const [username, setUsername] = useState(localStorage.getItem("username") || "");
+
+    const login = (token, userRole, name) => {
+        localStorage.setItem("token", token);
+        localStorage.setItem("role", userRole);
+        localStorage.setItem("username", name);
+        setIsLoggedIn(true);
+        setRole(userRole);
+        setUsername(name);
+    }
+
+    const logout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("role");
+        localStorage.removeItem("username");
+        setIsLoggedIn(false);
+        setRole("");
+        setUsername("");
+        setProject([]);
+        setTask([]);
+        setEmployee([]);
     }
 
     return (
-        <userContext.Provider value={{ project, task, employee, getAllProject, getAllTask, getAllTaskOfEmployee, addProject, addTask, deleteProject, updateTaskStatus, getAllEmployees }}>
+        <userContext.Provider value={{ project, task, employee, getAllProject, getAllTask, getAllTaskOfEmployee, addProject, addTask, deleteProject, updateTaskStatus, getAllEmployees, isLoggedIn, role, username, login, logout }}>
             {props.children}
         </userContext.Provider>
     )

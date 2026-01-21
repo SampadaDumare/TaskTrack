@@ -5,11 +5,10 @@ import Taskitem from './Taskitem';
 
 const Employee = () => {
   const context = useContext(userContext);
-  const {getAllTaskOfEmployee, task} = context;
+  const {getAllTaskOfEmployee, task, username} = context;
   const location = useLocation();
   const projectId = location.state?.projectId;
   const history = useHistory();
-  const name = localStorage.getItem("username");
 
   useEffect(()=>{
     if(localStorage.getItem("token")){
@@ -20,7 +19,7 @@ const Employee = () => {
   })
   return (
     <div className='container my-3'>
-      <h4>Welcome {name}</h4>
+      <h4>Welcome {username}</h4>
       <div className="row my-3">
         <h2 className="my-3">Your Tasks</h2>
         {task.length === 0 && <p>No tasks added yet</p>}

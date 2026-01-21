@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { jwtDecode } from 'jwt-decode';
+import userContext from '../context/userContext';
 
 const Signup = () => {
     const [credentials, setCredentials] = useState({ name: "", email: "", role: "", password: "", cpassword: "" });
     const history = useHistory();
+    const context = useContext(userContext);
+    const {login} = context;
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -19,10 +23,21 @@ const Signup = () => {
         const json = await response.json();
         console.log(json);
         if (json.success) {
-            // save authtoken in localstorage
-            localStorage.setItem("token", json.authToken);
-            alert("Signup Successful");
-            history.push("/");
+
+            // Decode authToken to get the role 
+            const decoded = jwtDecode(json.authToken);
+            const role = decoded.user.role;
+           
+            login(json.authToken, role, json.user.name);
+
+            alert("Login successful");
+            if (role === "admin") {
+                history.push("/admin")
+            } else if (role === "manager") {
+                history.push("/manager")
+            } else {
+                history.push("/employee")
+            }
         } else {
             alert("Signup Failed !!");
         }

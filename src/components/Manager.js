@@ -5,9 +5,8 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Manager = () => {
   const context = useContext(userContext);
-  const { project, getAllProject } = context;
+  const { project, getAllProject, username} = context;
   const history = useHistory();
-  const name = localStorage.getItem("username");
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -19,7 +18,7 @@ const Manager = () => {
 
   return (
     <div className='container my-3'>
-      <h4>Welcome {name}</h4>
+      <h4>Welcome {username}</h4>
       <div className="row my-3">
         <h2>All Projects</h2>
         {project.length === 0 && <p>No projects to display</p>}

@@ -19,13 +19,13 @@ const Taskitem = (props) => {
                     <p>Due Date: {new Date(tasks.dueDate).toLocaleDateString()}</p>
                     <div className="d-flex align-items-center justify-content-between">
                         <p>Status: {tasks.status}</p>
-                        {role === "employee" && <div class="dropdown">
-                            <i class="fa-solid fa-chevron-down" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" onClick={() => { updateTaskStatus(tasks._id, "ON HOLD") }}>ON HOLD</a></li>
-                                <li><a class="dropdown-item" onClick={() => { updateTaskStatus(tasks._id, "IN PROGRESS") }}>IN PROGRESS</a></li>
-                                <li><a class="dropdown-item" onClick={() => { updateTaskStatus(tasks._id, "REVIEW") }}>REVIEW</a></li>
-                                <li><a class="dropdown-item" onClick={() => { updateTaskStatus(tasks._id, "COMPLETED") }}>COMPLETED</a></li>
+                        {role === "employee" && <div className="dropdown">
+                            <i className="fa-solid fa-chevron-down" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                            <ul className="dropdown-menu">
+                                <li><a className="dropdown-item" onClick={() => { updateTaskStatus(tasks._id, "ON HOLD") }}>ON HOLD</a></li>
+                                <li><a className="dropdown-item" onClick={() => { updateTaskStatus(tasks._id, "IN PROGRESS") }}>IN PROGRESS</a></li>
+                                <li><a className="dropdown-item" onClick={() => { updateTaskStatus(tasks._id, "REVIEW") }}>REVIEW</a></li>
+                                <li><a className="dropdown-item" onClick={() => { updateTaskStatus(tasks._id, "COMPLETED") }}>COMPLETED</a></li>
                             </ul>
                         </div>}
                     </div>

@@ -1,20 +1,22 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import userContext from '../context/userContext'
 
 const Navbar = () => {
+    const context = useContext(userContext);
+    const { isLoggedIn, role, login, logout } = context;
     const history = useHistory();
-    const handleLogout = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("role");
+
+    const handleLogout = ()=>{
+        logout();
         history.push("/login");
     }
-    const role = localStorage.getItem("role");
 
-let homeRoute = "/";
-if (role === "admin") homeRoute = "/admin";
-if (role === "manager") homeRoute = "/manager";
-if (role === "employee") homeRoute = "/employee";
+    let homeRoute = "/";
+    if (role === "admin") homeRoute = "/admin";
+    if (role === "manager") homeRoute = "/manager";
+    if (role === "employee") homeRoute = "/employee";
 
     return (
         <>
@@ -33,7 +35,7 @@ if (role === "employee") homeRoute = "/employee";
                                 <Link className="nav-link" to="/about">About</Link>
                             </li>
                         </ul>
-                        {!localStorage.getItem("token") ?
+                        {!isLoggedIn ?
                             <form className="d-flex" role="search">
                                 <Link className="btn btn-outline-success mx-1" to='/login' type="submit">Login</Link>
                                 <Link className="btn btn-outline-success mx-1" to='/signup' type="submit">Signup</Link>

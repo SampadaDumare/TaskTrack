@@ -5,9 +5,8 @@ import Projectitem from './Projectitem';
 
 const Admin = () => {
   const context = useContext(userContext);
-  const {task, project,addProject,getAllProject, getAllTask} = context;
+  const {task, project,addProject,getAllProject, getAllTask, username} = context;
   const history = useHistory();
-  const username = localStorage.getItem("username");
   const location = useLocation();
   const projectId = location.state?.projectId;
 

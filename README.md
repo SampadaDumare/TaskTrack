@@ -1,70 +1,134 @@
-# Getting Started with Create React App
+TaskTrack is a full-stack task and project management application built for role-based users (Admin, Manager, Employee). It allows admins to create projects, managers to assign tasks, and employees to track and update their task status — all in real-time using React, Node.js, Express, and MongoDB.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Features:
+1. Role-Based Access Control
+    -Admin: Add/Delete Projects, View All Projects, View All Tasks assigned to the Project by Manager.
+    -Manager: Assign Tasks to Employees, View all Projects and Tasks.
+    -Employee: View assigned Tasks, Update Task Status.
+2. Authentication
+    -Secure signup/login with JWT tokens
+    -Password hashing using bcrypt
+3. Project & Task Management 
+    -Admin can create and delete projects
+    -Manager can assign tasks to employees under projects
+    -Employees can update task status (HOLD, IN-PROGRESS, RIVIEW, COMPLETED)
+4. Dynamic Dashboard
+    -Personalized welcome messages
+    -Project/task lists update in real-time
+5. Frontend
+    -React.js with Context API for state management
+    -Role-based routing
+    -Responsive UI using Bootstrap
+6. Backend
+    -Node.js + Express.js
+    -RESTful APIs
+    -MongoDB database for persistent storage
+    -Middleware for authentication and access control
 
-## Available Scripts
 
-In the project directory, you can run:
+Tech Stack:
+Frontend - React.js, Context API, Bootstrap
+Backend - Node.js, Express.js
+Database - MongoDB, Mongoose
+Authentication - JWT, bcrypt
+API Testing - Thunderclient
+Version Control - Git, GitHub
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Role-Based Functionality:
+Admin - Create/Delete Projects, View Projects, View Tasks assigned by   Managers
+Manager - Assign Tasks, View Projects & Tasks
+Employee - View Tasks assigned to them, Update task status
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+Setup Instructions:
+Prerequisites
+    Node.js(v16+ recommended)
+    npm 
+    MongoDB
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Backend and Frontend 
+    npm run both
+    Backend server rns at: http://localhost:4000 and Frontend also starts because of the usage of concurrently.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+API Endpoints Overview:
+Auth:
+1.  Method: POST
+    Endpoint: /api/auth/signup
+    Description: Create new user
+    Access: Public
+2.  Method: POST
+    Endpoint: /api/auth/login
+    Description: Login user
+    Access: Public
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Projects:
+1.  Method: POST
+    Endpoint: /api/user/addProject
+    Description: Create Project
+    Access: Admin only
+2.  Method: DELETE
+    Endpoint: /api/user/deleteProject/:id
+    Description: Delete project
+    Access: Admin only
+3.  Method: GET
+    Endpoint: /api/user/fetchAllProjects
+    Description: Fetch all projects
+    Access: Admin/Manager
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Tasks:
+1.  Method: POST
+    Endpoint: /api/user/addTask
+    Description: Add a task to project
+    Access: Manager only
+2.  Method: GET
+    Endpoint: /api/user/fetchAllTaskOfProject/:id
+    Description: Fetch all tasks of project
+    Access: Admin/Manager
+3.  Method: GET
+    Endpoint: /api/user/fetchAllTaskOfEmployee/:id 
+    Description: Fetch all tasks assigned
+    Access: Employee
+4.  Method: PUT
+    Endpoint: /api/user/updateStatus/:id
+    Description: Update task status
+    Access: Employee
 
-### `npm run eject`
+Users:
+1.  Method: GET
+    Endpoint: /api/user/fetchAllEmployees
+    Description: Get all employees
+    Access: All roles
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Future Improvements:
+    -Implement real-time updates using WebSockets
+    -Add drag-and-drop functionality for tasks
+    -Integrate email notifications for task assignments
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Screenshots:
+Home - Landing Page
+![Home](screenshots/Home.png)
 
-## Learn More
+Login page
+![Login](screenshots/Login.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Signup page
+![Signup](screenshots/Signup.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Admin - Home page
+![Admin-Home](screenshots/Admin-home.png)
 
-### Code Splitting
+Admin - FetchAllTasks page
+![Admin-fetchAllTasks](screenshots/Admin-seeAllTasks.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Manager - Home page
+![Manager-Home](screenshots/Manager-home.png)
 
-### Analyzing the Bundle Size
+Manager - AddTask page
+![Manager-AddTask](screenshots/Manager-addtask.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Employee - Home page
+![Employee-Home](screenshots/Employee-home.png)
