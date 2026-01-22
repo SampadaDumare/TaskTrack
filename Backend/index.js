@@ -17,11 +17,14 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/user', require('./routes/users'));
 
 // React build
-app.use(express.static(path.join(__dirname, '../build')));
+// AFTER all API routes
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "build")));
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../build', 'index.html'));
-});
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+  });
+}
 
 app.listen(port, () => {
     console.log(`TaskTrack backend listening on http://localhost:${port}`);
