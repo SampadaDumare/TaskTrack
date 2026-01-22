@@ -10,8 +10,8 @@ const AddTask = () => {
   const history = useHistory();
   const location = useLocation();
   const { projectId } = useParams();
-  const assignTo = location.state?.assignTo;
-  const createdBy = location.state?.createdBy;
+  // const assignTo = location.state?.assignTo;
+  // const createdBy = location.state?.createdBy;
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -82,7 +82,7 @@ const AddTask = () => {
         <h2>All Tasks Of This Project</h2>
         {task.length === 0 && <p>No tasks added yet</p>}
         {task.map((tasks) => {
-          return <Taskitem key={tasks._id} tasks={tasks} projectId={projectId} assignTo={assignTo} createdBy={createdBy} />
+          return <Taskitem key={tasks._id} tasks={tasks} projectId={projectId}  />
         })}
       </div>
 
