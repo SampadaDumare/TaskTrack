@@ -12,7 +12,7 @@ const Signup = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         console.log(credentials);
-        const response = await fetch("http://localhost:4000/api/auth/signup", {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/signup`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -30,7 +30,7 @@ const Signup = () => {
            
             login(json.authToken, role, json.user.name);
 
-            alert("Login successful");
+            alert("Signup successful");
             if (role === "admin") {
                 history.push("/admin")
             } else if (role === "manager") {

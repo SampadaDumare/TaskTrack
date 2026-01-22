@@ -5,8 +5,6 @@ const User = require('../models/Users');
 var jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-const JWT_SECRET = 'thisisfor@tasktrack';
-
 
 // Route1: Signup router created at POST at '/api/auth/signup' . No login required
 router.post('/signup', [
@@ -48,7 +46,7 @@ router.post('/signup', [
                 name: user.name
             }
         }
-        const authToken = jwt.sign(data, JWT_SECRET);
+        const authToken = jwt.sign(data, process.env.JWT_SECRET);
         success = true;
         res.json({success, authToken, user:{name:user.name}});
 
@@ -92,7 +90,7 @@ router.post('/login',[
                 name: user.name
             }
         }
-        const authToken = await jwt.sign(data, JWT_SECRET);
+        const authToken = await jwt.sign(data, process.env.JWT_SECRET);
         success = true;
         res.json({success, authToken, user:{name:user.name}});
 

@@ -2,7 +2,7 @@ import userContext from './userContext';
 import { useState } from 'react';
 
 const UserState = (props) => {
-    const host = "http://localhost:4000";
+    
     const initialProject = [];
     const initialTask = [];
     const [project, setProject] = useState(initialProject);
@@ -12,7 +12,7 @@ const UserState = (props) => {
     // get all projects
     const getAllProject = async () => {
         // API call
-        const response = await fetch(`${host}/api/user/fetchAllProjects`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/fetchAllProjects`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -27,7 +27,7 @@ const UserState = (props) => {
     // get all tasks for manager and admin
     const getAllTask = async (id) => {
         // API call
-        const response = await fetch(`${host}/api/user/fetchAllTaskOfProject/${id}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/fetchAllTaskOfProject/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -42,7 +42,7 @@ const UserState = (props) => {
     // get all tasks for employee
     const getAllTaskOfEmployee = async (id) => {
         // API call
-        const response = await fetch(`${host}/api/user/fetchAllTaskOfEmployee/${id}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/fetchAllTaskOfEmployee/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -57,7 +57,7 @@ const UserState = (props) => {
     // add project
     const addProject = async (name, description, startDate, endDate) => {
         // API call
-        const response = await fetch(`${host}/api/user/addProject`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/addProject`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -72,7 +72,7 @@ const UserState = (props) => {
     // add project
     const addTask = async (title, description, projectId, assignTo, dueDate) => {
         // API call
-        const response = await fetch(`${host}/api/user/addTask`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/addTask`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -90,7 +90,7 @@ const UserState = (props) => {
     // delete project
     const deleteProject = async (id) => {
         // API call
-        const response = await fetch(`${host}/api/user/deleteProject/${id}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/deleteProject/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -107,7 +107,7 @@ const UserState = (props) => {
     // update status of task
     const updateTaskStatus = async (id, status) => {
         // API call
-        const response = await fetch(`${host}/api/user/updateStatus/${id}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/updateStatus/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -131,7 +131,7 @@ const UserState = (props) => {
     const getAllEmployees = async () => {
         // API call
         try {
-            const response = await fetch(`${host}/api/user/fetchAllEmployees`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/fetchAllEmployees`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

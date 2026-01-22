@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = 'thisisfor@tasktrack';
 
 const fetchuser = (req, res, next) =>{
 
@@ -10,7 +9,7 @@ const fetchuser = (req, res, next) =>{
     }
 
     try {
-        const data = jwt.verify(token, JWT_SECRET);
+        const data = jwt.verify(token, process.env.JWT_SECRET);
         req.user = data.user;
         next();
 
