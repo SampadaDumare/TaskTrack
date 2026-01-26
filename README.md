@@ -1,5 +1,4 @@
-TaskTrack
-Role-Based Task & Project Management System (MERN Stack)
+TaskTrack - Role-Based Task & Project Management System (MERN Stack)
 
 TaskTrack is a full-stack task and project management application built using the MERN stack.
 It is designed to manage projects and tasks in a team environment using role-based access control.
