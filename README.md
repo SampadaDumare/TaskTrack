@@ -1,118 +1,159 @@
-TaskTrack is a full-stack task and project management application built for role-based users (Admin, Manager, Employee). It allows admins to create projects, managers to assign tasks, and employees to track and update their task status — all in real-time using React, Node.js, Express, and MongoDB.
+TaskTrack
+Role-Based Task & Project Management System (MERN Stack)
 
-Live Demo:
+TaskTrack is a full-stack task and project management application built using the MERN stack.
+It is designed to manage projects and tasks in a team environment using role-based access control.
+
+🔍 Project Overview
+
+TaskTrack enables teams to create projects, assign tasks, and track progress efficiently.
+The system supports three user roles, each with defined responsibilities and permissions.
+
+This project demonstrates:
+
+Role-based authentication and authorization
+
+Secure backend APIs
+
+Real-world task lifecycle management
+
+Separation of frontend and backend concerns
+
+🚀 Live Demo:
      Frontend (React App): [Click here](https://tasktrack-frontend-32qs.onrender.com)
      Backend API (Node.js/Express): [Click here](https://tasktrack-2.onrender.com)
 
-Features:
-1. Role-Based Access Control
-    -Admin: Add/Delete Projects, View All Projects, View All Tasks assigned to the Project by Manager.
-    -Manager: Assign Tasks to Employees, View all Projects and Tasks.
-    -Employee: View assigned Tasks, Update Task Status.
-2. Authentication
-    -Secure signup/login with JWT tokens
-    -Password hashing using bcrypt
-3. Project & Task Management 
-    -Admin can create and delete projects
-    -Manager can assign tasks to employees under projects
-    -Employees can update task status (HOLD, IN-PROGRESS, RIVIEW, COMPLETED)
-4. Dynamic Dashboard
-    -Personalized welcome messages
-    -Project/task lists update in real-time
-5. Frontend
-    -React.js with Context API for state management
-    -Role-based routing
-    -Responsive UI using Bootstrap
-6. Backend
-    -Node.js + Express.js
-    -RESTful APIs
-    -MongoDB database for persistent storage
-    -Middleware for authentication and access control
+
+👥 User Roles & Access
+
+The application supports the following roles:
+
+Admin
+
+Manages users
+
+Oversees the system
+
+Manager
+
+Creates projects
+
+Assigns tasks to employees
+
+Employee
+
+Views assigned tasks
+
+Updates task status
+
+Access to routes and actions is restricted based on the user’s role.
+
+✨ Core Features
+
+User authentication using JSON Web Tokens (JWT)
+
+Password encryption with bcrypt
+
+Role-based authorization
+
+Project creation and management
+
+Task assignment and tracking
+
+Task status lifecycle:
+
+HOLD
+
+IN-PROGRESS
+
+REVIEW
+
+COMPLETED
+
+RESTful API architecture
+
+Separate frontend and backend applications
+
+🛠️ Tech Stack
+Frontend
+
+React.js
+
+React Router
+
+Context API
+
+CSS
+
+Backend
+
+Node.js
+
+Express.js
+
+MongoDB
+
+Mongoose
+
+JWT (Authentication)
+
+bcrypt (Password hashing)
+
+🧱 Application Architecture
+
+Frontend handles UI, routing, and state management
+
+Backend exposes REST APIs for authentication, projects, tasks, and users
+
+MongoDB stores users, projects, and task data
+
+Role-based middleware controls access to protected routes
 
 
-Tech Stack:
-Frontend - React.js, Context API, Bootstrap
-Backend - Node.js, Express.js
-Database - MongoDB, Mongoose
-Authentication - JWT, bcrypt
-API Testing - Thunderclient
-Version Control - Git, GitHub
+🔗 API Endpoints
+Authentication
 
+    POST /api/auth/signup
 
-Role-Based Functionality:
-Admin - Create/Delete Projects, View Projects, View Tasks assigned by   Managers
-Manager - Assign Tasks, View Projects & Tasks
-Employee - View Tasks assigned to them, Update task status
+    POST /api/auth/login
 
+User Management
 
-Setup Instructions:
-Prerequisites
-    Node.js(v16+ recommended)
-    npm 
-    MongoDB
+    GET /api/user/getUsers
 
-Backend and Frontend 
-    npm run both
-    Backend server rns at: http://localhost:4000 and Frontend also starts because of the usage of concurrently.
+    PUT /api/user/updateStatus/:id
 
+    Project Management
 
-API Endpoints Overview:
-Auth:
-1.  Method: POST
-    Endpoint: /api/auth/signup
-    Description: Create new user
-    Access: Public
-2.  Method: POST
-    Endpoint: /api/auth/login
-    Description: Login user
-    Access: Public
+    POST /api/project/addProject
 
-Projects:
-1.  Method: POST
-    Endpoint: /api/user/addProject
-    Description: Create Project
-    Access: Admin only
-2.  Method: DELETE
-    Endpoint: /api/user/deleteProject/:id
-    Description: Delete project
-    Access: Admin only
-3.  Method: GET
-    Endpoint: /api/user/fetchAllProjects
-    Description: Fetch all projects
-    Access: Admin/Manager
+    GET /api/project/getProjects
 
-Tasks:
-1.  Method: POST
-    Endpoint: /api/user/addTask
-    Description: Add a task to project
-    Access: Manager only
-2.  Method: GET
-    Endpoint: /api/user/fetchAllTaskOfProject/:id
-    Description: Fetch all tasks of project
-    Access: Admin/Manager
-3.  Method: GET
-    Endpoint: /api/user/fetchAllTaskOfEmployee/:id 
-    Description: Fetch all tasks assigned
-    Access: Employee
-4.  Method: PUT
-    Endpoint: /api/user/updateStatus/:id
-    Description: Update task status
-    Access: Employee
+    GET /api/project/getProject/:id
 
-Users:
-1.  Method: GET
-    Endpoint: /api/user/fetchAllEmployees
-    Description: Get all employees
-    Access: All roles
+Task Management
+
+    POST /api/user/addTask
+
+    GET /api/user/getTasks
+
+    PUT /api/user/updateTask/:id
+
+    DELETE /api/user/deleteTask/:id
+
+    All endpoints are protected and accessible based on user roles.
 
 
 Future Improvements:
-    -Implement real-time updates using WebSockets
-    -Add drag-and-drop functionality for tasks
-    -Integrate email notifications for task assignments
+    Implement real-time updates using WebSockets
+
+    Add drag-and-drop functionality for tasks
+
+    Integrate email notifications for task assignments
 
 
 Screenshots:
+
 Home - Landing Page
 ![Home](Screenshots/Home.png)
 
@@ -136,3 +177,20 @@ Manager - AddTask page
 
 Employee - Home page
 ![Employee-Home](Screenshots/Employee-home.png)
+
+⚙️ Installation & Setup
+Prerequisites
+
+Node.js
+
+MongoDB
+
+Backend Setup
+cd Backend
+npm install
+npm run dev
+
+Frontend Setup
+cd Frontend
+npm install
+npm start
