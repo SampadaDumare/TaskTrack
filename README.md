@@ -1,115 +1,117 @@
-TaskTrack - Role-Based Task & Project Management System (MERN Stack)
+TaskTrack 
+Role-Based Task & Project Management System (MERN Stack)
 
 TaskTrack is a full-stack task and project management application built using the MERN stack.
 It is designed to manage projects and tasks in a team environment using role-based access control.
 
+
 🔍 Project Overview
 
-TaskTrack enables teams to create projects, assign tasks, and track progress efficiently.
-The system supports three user roles, each with defined responsibilities and permissions.
+    TaskTrack enables teams to create projects, assign tasks, and track progress efficiently.
+    The system supports three user roles, each with defined responsibilities and permissions.
 
-This project demonstrates:
+    This project demonstrates:
 
-Role-based authentication and authorization
+    Role-based authentication and authorization
 
-Secure backend APIs
+    Secure backend APIs
 
-Real-world task lifecycle management
+    Real-world task lifecycle management
 
-Separation of frontend and backend concerns
+    Separation of frontend and backend concerns
 
 🚀 Live Demo:
-     Frontend (React App): [Click here](https://tasktrack-frontend-32qs.onrender.com)
-     Backend API (Node.js/Express): [Click here](https://tasktrack-2.onrender.com)
+    Frontend (React App): [Click here](https://tasktrack-frontend-32qs.onrender.com)
+    Backend API (Node.js/Express): [Click here](https://tasktrack-2.onrender.com)
+
 
 
 👥 User Roles & Access
 
-The application supports the following roles:
+    The application supports the following roles:
 
-Admin
+    Admin
 
-Manages users
+    Manages users
 
-Oversees the system
+    Oversees the system
 
-Manager
+    Manager
 
-Creates projects
+    Creates projects
 
-Assigns tasks to employees
+    Assigns tasks to employees
 
-Employee
+    Employee
 
-Views assigned tasks
+    Views assigned tasks
 
-Updates task status
+    Updates task status
 
-Access to routes and actions is restricted based on the user’s role.
+    Access to routes and actions is restricted based on the user’s role.
+
 
 ✨ Core Features
 
-User authentication using JSON Web Tokens (JWT)
+    User authentication using JSON Web Tokens (JWT)
 
-Password encryption with bcrypt
+    Password encryption with bcrypt
 
-Role-based authorization
+    Role-based authorization
 
-Project creation and management
+    Project creation and management
 
-Task assignment and tracking
+    Task assignment and tracking
 
-Task status lifecycle:
+    Task status lifecycle:
 
-HOLD
+    HOLD
 
-IN-PROGRESS
+    IN-PROGRESS
 
-REVIEW
+    REVIEW
 
-COMPLETED
+    COMPLETED
 
-RESTful API architecture
+    RESTful API architecture
 
-Separate frontend and backend applications
+    Separate frontend and backend applications
+
 
 🛠️ Tech Stack
+
 Frontend
 
-React.js
-
-React Router
-
-Context API
-
-CSS
+    React.js
+    React Router
+    Context API
+    CSS
 
 Backend
 
-Node.js
+    Node.js
+    Express.js
+    MongoDB
+    Mongoose
+    JWT (Authentication)
+    bcrypt (Password hashing)
 
-Express.js
 
-MongoDB
-
-Mongoose
-
-JWT (Authentication)
-
-bcrypt (Password hashing)
 
 🧱 Application Architecture
 
-Frontend handles UI, routing, and state management
+    Frontend handles UI, routing, and state management
 
-Backend exposes REST APIs for authentication, projects, tasks, and users
+    Backend exposes REST APIs for authentication, projects, tasks, and users
 
-MongoDB stores users, projects, and task data
+    MongoDB stores users, projects, and task data
 
-Role-based middleware controls access to protected routes
+    Role-based middleware controls access to protected routes
+
 
 
 🔗 API Endpoints
+
 Authentication
 
     POST /api/auth/signup
@@ -144,6 +146,7 @@ Task Management
 
 
 Future Improvements:
+
     Implement real-time updates using WebSockets
 
     Add drag-and-drop functionality for tasks
@@ -178,18 +181,17 @@ Employee - Home page
 ![Employee-Home](Screenshots/Employee-home.png)
 
 ⚙️ Installation & Setup
-Prerequisites
+        Prerequisites
+        Node.js
+        MongoDB
 
-Node.js
-
-MongoDB
 
 Backend Setup
-cd Backend
-npm install
-npm run dev
+    cd Backend
+    npm install
+    npm run dev
 
 Frontend Setup
-cd Frontend
-npm install
-npm start
+    cd Frontend
+    npm install
+    npm start
