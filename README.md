@@ -21,11 +21,10 @@ It is designed to manage projects and tasks in a team environment using role-bas
 
     Separation of frontend and backend concerns
 
-🚀 Live Demo:
+🚀 **Live Demo**
 
-    Frontend (React App): https://tasktrack-frontend-32qs.onrender.com
-
-    Backend API (Node.js/Express): https://tasktrack-2.onrender.com
+- **Frontend (React App):** https://tasktrack-frontend-32qs.onrender.com
+- **Backend API (Node.js/Express):** https://tasktrack-2.onrender.com
 
 
 
