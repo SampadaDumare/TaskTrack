@@ -23,9 +23,9 @@ It is designed to manage projects and tasks in a team environment using role-bas
 
 🚀 Live Demo:
 
-    Frontend (React App): [Click here](https://tasktrack-frontend-32qs.onrender.com)
+    Frontend (React App): https://tasktrack-frontend-32qs.onrender.com
 
-    Backend API (Node.js/Express): [Click here](https://tasktrack-2.onrender.com)
+    Backend API (Node.js/Express): https://tasktrack-2.onrender.com
 
 
 
