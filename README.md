@@ -183,17 +183,20 @@ Employee - Home page
 ![Employee-Home](Screenshots/Employee-home.png)
 
 ⚙️ Installation & Setup
+
         Prerequisites
         Node.js
         MongoDB
 
 
 Backend Setup
+
     cd Backend
     npm install
     npm run dev
 
 Frontend Setup
+
     cd Frontend
     npm install
     npm start
