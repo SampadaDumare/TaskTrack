@@ -12,7 +12,8 @@ const Login = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -37,6 +38,10 @@ const Login = () => {
             }
         } else {
             alert("Login Failed !!")
+        }
+        } catch (err) {
+            console.error("Login Error:", err);
+            alert(err.message);
         }
     }
 

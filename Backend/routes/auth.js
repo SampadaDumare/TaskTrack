@@ -52,7 +52,7 @@ router.post('/signup', [
 
     } catch (error) {
         console.error(error.message)
-        return res.status(500).send("Internal server error")
+        return res.status(500).json({success:false, error:"Internal server error"})
     }
 })
 
@@ -96,7 +96,7 @@ router.post('/login',[
 
     } catch (error) {
         console.error(error.message)
-        return res.status(500).send("Internal server error")
+        return res.status(500).json({success:false, error:"Internal server error"})
     }
 })
 

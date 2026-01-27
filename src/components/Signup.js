@@ -7,39 +7,43 @@ const Signup = () => {
     const [credentials, setCredentials] = useState({ name: "", email: "", role: "", password: "", cpassword: "" });
     const history = useHistory();
     const context = useContext(userContext);
-    const {login} = context;
+    const { login } = context;
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        console.log(credentials);
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/signup`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ name: credentials.name, email: credentials.email, role: credentials.role, password: credentials.password })
-        })
+        try {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/signup`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ name: credentials.name, email: credentials.email, role: credentials.role, password: credentials.password })
+            })
 
-        const json = await response.json();
-        console.log(json);
-        if (json.success) {
+            const json = await response.json();
+            console.log(json);
+            if (json.success) {
 
-            // Decode authToken to get the role 
-            const decoded = jwtDecode(json.authToken);
-            const role = decoded.user.role;
-           
-            login(json.authToken, role, json.user.name);
+                // Decode authToken to get the role 
+                const decoded = jwtDecode(json.authToken);
+                const role = decoded.user.role;
 
-            alert("Signup successful");
-            if (role === "admin") {
-                history.push("/admin")
-            } else if (role === "manager") {
-                history.push("/manager")
+                login(json.authToken, role, json.user.name);
+
+                alert("Signup successful");
+                if (role === "admin") {
+                    history.push("/admin")
+                } else if (role === "manager") {
+                    history.push("/manager")
+                } else {
+                    history.push("/employee")
+                }
             } else {
-                history.push("/employee")
+                alert("Signup Failed !!");
             }
-        } else {
-            alert("Signup Failed !!");
+        } catch (err) {
+            console.error("Signup Error:", err);
+            alert(err.message);
         }
     }
 
