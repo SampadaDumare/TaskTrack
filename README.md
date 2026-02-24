@@ -23,7 +23,7 @@ It is designed to manage projects and tasks in a team environment using role-bas
 
 🚀 **Live Demo**
 
-- **Frontend (React App):** https://tasktrack-frontend-32qs.onrender.com
+- **Frontend (React App):** https://task-track-ashen.vercel.app
 - **Backend API (Node.js/Express):** https://tasktrack-2.onrender.com
 
 
